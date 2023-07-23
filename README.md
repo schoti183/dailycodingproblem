@@ -1,2 +1,2 @@
 # dailycodingproblem
-Solving Coding Problems from Tech-Company interviews
+Solving coding problems from Tech-Company interviews.
