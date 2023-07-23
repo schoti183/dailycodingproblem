@@ -4,7 +4,7 @@
 class Element{
 	friend class List;
 	private:
-		Element(int n, Element * prev = nullptr, Element * next = nullptr): mNumber(n), mNext(next) {}
+		Element(int n, Element * prev = nullptr, Element * next = nullptr): mNumber(n), mPrevious(prev), mNext(next) {}
 		int mNumber;
 		Element * mPrevious;
 		Element * mNext;

@@ -19,6 +19,7 @@ void List::insert(int n) {
 		if (p->mNumber == n) {
 			if (!p->mPrevious) {
 				mHead = p->mNext;
+				p->mNext->mPrevious = nullptr;
 				delete p;
 				return;
 			}
@@ -28,7 +29,6 @@ void List::insert(int n) {
 				delete p;
 				return;
 			}
-			std::cout << n << std::endl;
 			p->mPrevious->mNext = p->mNext;
 			p->mNext->mPrevious = p->mPrevious;
 			delete p;
@@ -38,7 +38,7 @@ void List::insert(int n) {
 			p->mNext = new Element(n, p);
 			return;
 		}
-		else {p = p->mNext;}
+		p = p->mNext;
 	}
 }
 
