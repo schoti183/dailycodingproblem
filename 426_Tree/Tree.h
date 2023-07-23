@@ -9,12 +9,11 @@ class Tree {
 		Tree(): mRoot(nullptr) {}
 		void insert(int);
 		void print(void);
-		int maxDepth(Node *);
-		void lvlsum(void);
+		int maxDepth();
+		void lvlsum(int []);
 
+	private:
 		Node * mRoot;
-		
-
 };
 
 #endif

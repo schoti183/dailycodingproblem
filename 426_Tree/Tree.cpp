@@ -32,8 +32,27 @@ void Tree::print(void) {
 	std::cout << this->mRoot;
 }
 
-//returns the maximal depth of the tree
-int Tree::maxDepth(Node * p) {
+//recursive functione to get the deepest leaf of the tree
+int getDepth(Node * p) {
 	if (!p) return 0;
-	return 1 + (std::max(maxDepth(p->mLeft), maxDepth(p->mRight)));
+	return 1 + (std::max(getDepth(p->mLeft), getDepth(p->mRight)));
+}
+
+//returns the maximal depth of the tree
+int Tree::maxDepth() {
+	return getDepth(this->mRoot);
+}
+
+void recursive_sum(int arr[], int lvl, Node *p) {
+	if (!p) return;
+	recursive_sum(arr, lvl + 1, p->mLeft);
+	arr[lvl] += p->mNumber;
+	recursive_sum(arr, lvl + 1, p->mRight);
+	--lvl;
+	return;
+}
+
+void Tree::lvlsum(int arr[]) {
+	recursive_sum(arr, 1, mRoot);	
+	return; 
 }

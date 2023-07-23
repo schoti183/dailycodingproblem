@@ -4,7 +4,7 @@
 //printing one Note
 
 std::ostream & operator<<(std::ostream & os, Node & a) {
-	os << a.mNumber << std::endl;
+	os << a.mNumber << "\t";
 	return os;
 }
 
