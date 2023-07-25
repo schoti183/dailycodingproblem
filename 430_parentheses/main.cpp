@@ -2,6 +2,15 @@
 #include <iostream>
 #include <ostream>
 
+int checkParentheses(std::string input) {
+	int counter = 0;
+	for (char letter:input) {
+		if ('(' == letter) ++counter;
+		if (')' == letter) --counter;
+		if (counter < 0) return -1;
+	}
+	return counter; 
+}
 int main(int argc, const char *argv[]) {
 	if (argc != 2) {
 		std::cout << argv[0] << ": \"enter string\"" << std::endl;
@@ -9,16 +18,14 @@ int main(int argc, const char *argv[]) {
 	}
 	std::string input;
 	char output = ' ';
-	int counter = 0;
 	input = argv[1];	
-	for (char letter:input) {
-		if ('(' == letter) ++counter;
-		if (')' == letter) --counter;
+	int counter = checkParentheses(input);
+	while (counter < 0) {
+		input = '(' + input;
+		counter = checkParentheses(input);
 	}
-	if (counter > 0) output = ')';
-	if (counter < 0) output = '(';
 	for (int i = 0; i < abs(counter); ++i) {
-		input += output;
+		input += ')';
 	}
 	
 	std::cout << input << std::endl;
